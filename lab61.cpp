@@ -14,11 +14,11 @@ int main()
     float x_last = get_number("х конечный элемент");
     float x_delta = get_number("шаг х");
 
-    do
+    while (x <= x_last + x_delta / 2.0)
     {
         if (x == 2)
         {    
-            cout << "F(" << x << ") не существует (деление на 0)";
+            cout << "F(" << x << ") не существует (деление на 0)" << endl;
         }
         else
         {    
@@ -26,7 +26,7 @@ int main()
         }
         
         x += x_delta;
-    } while (x <= x_last + x_delta / 2.0);
+    } 
     
     return 0;
 }
