@@ -16,9 +16,17 @@ int main()
 
     do
     {
-        cout << "F(" << x << ") = " << 2.5 * pow(x, 3) + (3.2 / (x - 2)) + pow(sin(x), 3) << endl;
+        if (x == 2)
+        {    
+            cout << "F(" << x << ") не существует (деление на 0)";
+        }
+        else
+        {    
+            cout << "F(" << x << ") = " << 2.5 * pow(x, 3) + (3.2 / (x - 2)) + pow(sin(x), 3) << endl;
+        }
+        
         x += x_delta;
-    } while (x <= x_last);
+    } while (x <= x_last + x_delta / 2.0);
     
     return 0;
 }
