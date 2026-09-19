@@ -38,8 +38,10 @@ int main()
     {    
         print_matrix(row, col, i);
         count_matrix(row, col, matrix, i, count);
-        print_name(i);
     }
+
+    print_name(ARR);
+    return 0;
 
 }
 
@@ -76,7 +78,7 @@ void matrix_fill (int n, int x, int y, int row, int col, float matrix[ARR][MAX_R
 
 void print_matrix (int row, int col, int n)
 {    
-    cout << "Матрица " << n << " : " << endl;
+    cout << "Матрица " << n + 1 << " : " << endl;
     for (int i = 0; i < row; i++)
     {    
        
@@ -90,26 +92,27 @@ void print_matrix (int row, int col, int n)
 
 void count_matrix (int row, int col, float matrix[ARR][MAX_ROW][MAX_COL], int n, int count[ARR])
 {
-    for (int i = 0; i < row; i++)
+    count[n] = 0;
+    for (int i = 0; i < row; i += 2)
     {    
-        if (i % 2 != 0)
+        for (int j = 0; j < col; j++)
         {    
-            for (int j = 0; j < col; j++)
+            if (matrix[n][i][j] < 0)
             {    
-                if (matrix[n][i][j] < 0)
-                {    
-                    count[n]++;
-                }
+                count[n]++;
             }
         }
     }
 }
 
-void print_name (int n)
-{    
-    if (count[n] % 2 == 0)
-    {    
-        cout << "Матрица " << n << " ";
+void print_name (int ARR)
+{   
+    cout << "Имеет(ют) четное количество отрицательных элементов в нечетных строках:" << endl;
+    for (int i = 0; i < ARR; i++)
+    {     
+        if (count[i] > 0 && count[i] % 2 == 0)
+        {    
+            cout << "Матрица " << i + 1 << " ";
+        }
     }
-    cout << ": имеет(ют) четное количество отрицательных элементов в нечетных строках" << endl;
 }
